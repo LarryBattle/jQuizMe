@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe StatusUpdate Demo 3 - by Larry Battle</title>
+	<link rel="stylesheet" type="text/css" href= "http://jquizme.googlecode.com/hg/releases/pre-release%20of%20jQuizMe%202.2%20fixed/jQuizMe-2.2.css"/>
+</head>
+<body>
+	<a href = "http://code.google.com/p/jquizme/wiki/statusUpdate" >Back to statusUpdate wiki</a><br/>
+	<p>Using jQuery <span id="jqueryVersion"></span> and jQuizMe <span id="jQuizMeVersion"></span></p>
+	<h2>jQuizMe StatusUpdate Demo 3</h2>
+	<h2>Goal:</h2>
+	Hide the help and quit button row. Also display a message when the quiz has finished.
+	<h2>Example:</h2>
+	<div id="quizArea"></div>
+<h2>Code:</h2>
+<code><pre>
+options.statusUpdate = function( quizInfo, $quiz ){
+	$(".q-help", $quiz ).hide();
+	if( quizInfo.hasQuit ){
+		var message = "Thank you for using jQuizMe. \n For More information google 'jQuizMe'.";
+		alert( message );
+	}
+};
+</pre></code>
+</body>
+<script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://jquizme.googlecode.com/hg/releases/pre-release%20of%20jQuizMe%202.2%20fixed/jQuizMe-2.2.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quiz = [
+        { 
+                ques: "Silver", //question
+                ans: "Ag", // answer
+                ansInfo : "<br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"  // answer information.
+        },
+        {
+                ques: "Gold.", 
+                ans: "Au", 
+                ansInfo : "Gold-Au <br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+        }
+	];
+	var options = {};
+	options.statusUpdate = function( quizInfo, $quiz ){
+		$(".q-help", $quiz ).hide();
+		if( quizInfo.hasQuit ){
+			var answers = getAnswersFromProblemObj( quizInfo );
+			alert( "Fake POST to storeUserAnswers.php\nPassing: " + JSON.stringify( answers ) );
+			// You can send the answers to a php server like so.
+			// $.post( "storeUserAnswers.php", { data: answers } );
+		}
+	};
+	var getAnswersFromProblemObj = function( quizInfo ){
+		var answers = [];
+		if( quizInfo && typeof quizInfo === "object" ){
+			var obj = quizInfo.problem;
+			for(var i = 0, len = quizInfo.total; i < len; i++){
+				answers.push( obj[i].userAnswer );
+			}
+		}
+		return answers;
+	};
+	$( "#quizArea" ).jQuizMe( quiz, options );
+	
+	// Displays version information.
+	$( "#jqueryVersion" ).text( $.fn.jquery );
+	$( "#jQuizMeVersion" ).text( $.fn.jQuizMe.version );
+});
+</script>
+</html>
