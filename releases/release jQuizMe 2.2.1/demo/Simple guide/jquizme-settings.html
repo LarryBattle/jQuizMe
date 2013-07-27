@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe: Options.*</title>
+	<link rel="stylesheet" type="text/css" href="../../css/jQuizMe.css"/>
+	<style type="text/css">
+		#animationBox{ 
+			margin: 1em;
+			width: 100em;
+			height: 25em;
+		}
+		.quizType{
+			margin: 0.1em;
+			float: left;
+		}
+		body{
+			padding-left: 1em;
+		}
+		p{
+			padding-left: 1.2em;
+		}
+		h1, h2{
+			border-left: solid 1em black;
+			border-bottom: solid 1px black;
+			padding-left: 1em;
+		}
+		pre{
+			border-left: solid 0.2em black;
+			color: black;
+			padding-left: 1em;
+		}
+	</style>
+</head>
+<body>
+	<center><a href = "http://code.google.com/p/jquizme/wiki/HowToUse" >Back</a></center>
+	<p>
+	<h1>jQuizMe: Options.*</h1>
+	<q>This page will explain the options.<br/>
+	Also, the following two quizzes will be used throughout this page.</q>
+	<cite>- By Larry Battle</cite>
+	<code><pre>
+//quiz1 is an array of ques objects.
+var quiz1 = [	
+	{ 
+		ques: "Silver", 		//question
+		ans: "Ag", 			// answer
+		ansInfo : "More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+	},
+	{
+		ques: "Gold", 
+		ans: "Au", 
+		ansInfo : "Gold-Au -> More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+	}
+], 
+//quiz2 is object with quiz type properties.
+quiz2 = {
+	"fill": quiz1,
+	"tf":[
+		{
+			ques: "The derivative of x.",
+			ans: "1",
+			ansSel: [ "x", "not a number", "x^2" ]
+		},
+		{
+			ques: "Absolute Zero is 273.15 Kelvin.",
+			ans: false,
+			ansInfo: "Absolute Zero is 0 Kelvin or -273.15 degrees Celicus."
+		}
+	]
+};
+	</pre></code>
+	</p>
+	<h2>Options.activeClass : string</h2> 
+	<p>
+		On multipleChoiceOl quiz type, when an answer has been selected, <b>Options.activeClass</b> will be added to the class.
+		<code><pre>
+options.title = "quizType: multipleChoiceOl";
+options.quizType = "multiList";		
+$( "#activeClass" ).jQuizMe( quiz1, options );		
+		</pre></code>
+		<div id="animationBox">
+			<div id="activeClass" class="quizType"></div>
+		</div>
+	</p>	
+	
+	<h2>Options.addToEnd : string</h2> 
+	<p>
+		This is attached to each question in fillInTheBlank quiz type.
+		<code><pre>options.addToEnd = " has what periodic symbol ?";
+$( "#addToEnd" ).jQuizMe( quiz1, options );	
+		</pre></code>
+		<div id="animationBox">
+			<div id="addToEnd" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.allQuizType : string</h2> 
+	<p>
+		Sets all questions to the same quiz types.
+		<code><pre>
+options.allQuizType = "multi";
+$( "#allQuizType" ).jQuizMe( quiz2, options );		</pre></code>
+		<div id="animationBox">
+			<div id="allQuizType" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.allRandom : boolean</h2> 
+	<p>
+		<b>Options.allRandom</b> will create all the quiz types then randomize the positions.
+		<code><pre>options.allRandom = true;</pre></code>
+		<div id="animationBox">
+			<div id="allRandom" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.disableDelete : boolean</h2> 	
+	<p>
+		This will hide the delete button on quit.
+		<code><pre>options.disableDelete = true;
+$( "#disableDelete" ).jQuizMe( quiz1, options );		</pre></code>
+		<div id="animationBox">
+			<div id="disableDelete" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.disableRestart :　boolean</h2> 	
+	<p>
+		This will hide the restart button on quit.
+		<code><pre>options.disableRestart = true;
+$( "#disableRestart" ).jQuizMe( quiz1, options );		</pre></code>
+		<div id="animationBox">
+			<div id="disableRestart" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.help : string</h2> 
+	<p>
+		This will be displayed with the help button is clicked.
+		<code><pre>options.help = "Use <^a href='http://www.google.com' alt='Google.com'>Google.com</a> to cheat";</pre></code>
+		<div id="animationBox">
+			<div id="help" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.hoverClass : string</h2> 
+	<p>
+		On multipleChoiceOl quizType, set's this class on hover.
+		<code><pre>options.hoverClass = "q-ol-hover";</pre></code>
+		<div id="animationBox">
+			<div id="hoverClass" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.intro : string</h2> 
+	<p>
+		Provide a text/html intro.
+		<code><pre>options.intro = "Use google to cheat.";</pre></code>
+		<div id="animationBox">
+			<div id="intro" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.multiLen : number</h2> 
+	<p>
+		Set the number of multiple choice options for quizType multi & multiList.<br/>
+		This is ignored when there is an ansSel property.
+		<code><pre>options.multiLen = 1;</pre></code>
+		<div id="animationBox">
+			<div id="multiLen" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.numOfQuizQues : number</h2> 	
+	<p>
+		Sets the number of questions asked. Must be between 0 and the amount of total questions.
+		<code><pre>options.numOfQuizQues = 2;</pre></code>
+		<div id="animationBox">
+			<div id="numOfQuizQues" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.random : boolean</h2> 
+	<p>
+		Randomizes all the questions in each quiz type section.
+		<code><pre>options.random = true;</pre></code>
+		<div id="animationBox">
+			<div id="random" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.review : boolean</h2>
+	<p>
+		Allow a review of the questions after the user quits.
+		<code><pre>options.review = false;</pre></code>
+		<div id="animationBox">
+			<div id="review" class="quizType"></div>
+		</div>		
+	</p>
+	<h2>Options.retry : number</h2>
+	<p>
+		Retry is the number of attempt a user can have for a question.
+		<code><pre>
+var quizWithRetry = {
+	"fill":[
+		{ "ques": "What is 41 * 1.5 ?", "ans":(41*1.5), "retry": 5 }
+	]
+}, 
+options = { 
+	intro: "Your get 5 chances to answer correctly."
+};
+$( "#retry" ).jQuizMe( quizWithRetry, options );</pre></code>
+		<div id="animationBox">
+			<div id="retry" class="quizType"></div>
+		</div>		
+	</p>
+	<h2>Options.showFeedback : boolean</h2> 
+	<p>
+		Show the answers after each question.	
+		<code><pre>options.showFeedback = false;</pre></code>
+		<div id="animationBox">
+			<div id="showFeedback" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.showAnsInfo : boolean</h2> 
+	<p>
+		If provided, show the answers information after each question.
+		<code><pre>options.showAnsInfo = false;</pre></code>
+		<div id="animationBox">
+			<div id="showAnsInfo" class="quizType"></div>
+		</div>
+	</p>
+	<h2>Options.showHTML : boolean</h2>
+	<p>
+		This will display all questions in HTML by converting it to Unicode before displaying.<br/>
+		<b>Note</b>: To save the answer positions and not have them appear in random order <br/> for multiple choice quiz types,
+		place null in the ansSel property for the desired position of the answer.
+		<code><pre>
+var quizWithHTML = {
+	multiList:[{
+		ques: "Which html tag is outdated.",
+		ans: "&lt;big&gt;",
+		ansSel: [ null, "&lt;li&gt;", "&lt;td&gt;" ]
+	}]
+};
+options.showHTML = true;
+$( "#showHTML" ).jQuizMe( quizWithHTML, options );
+</pre></code>
+		<div id="animationBox">
+			<div id="showHTML" class="quizType"></div>
+		</div>		
+	</p>
+	<h2>Options.showWrongAns : boolean</h2> 			
+	<p>
+		If answer is wrong, then show the user's wrong answer after each question.
+		<code><pre>options.showWrongAns = true;</pre></code>
+		<div id="animationBox">
+			<div id="showWrongAns" class="quizType"></div>
+		</div>
+	</p>	
+	<h2>Options.statusUpdate : function</h2> 			
+	<p>
+		Sends a status update when user switches questions or quits.<br/>
+		settings.statusUpdate arguments to ( quizInfo, $currQuiz )<br/>
+		quizInfo properties are: right, score, total, tried, wrong, hasQuit, quitFunc, nextFunc.<br/>
+		<b>quizInfo.problem</b> is array of objects which corresponds to the questions presented by jQuizMe.<br/>
+		Each element in "problem" contains an object as the following.<br/>
+		<code><pre>{ "isCorrect": boolean, "userAnswer": string, "amountTried": number }</pre></code>
+		Note that null is assigned to quizInfo.problem indexes for questions that have not be checked.<br/>
+		Example: problem[0].isCorrect	// Tells you if the first question was correct.<br/>
+		<b>quizInfo.numOfRight</b> is the number of right questions.<br/>
+		<b>quizInfo.numOfWrong</b> is the number of wrong questions.<br/>
+		<b>quizInfo.score</b> is the current score.<br/>
+		<b>quizInfo.total</b> is the number of questions that are in the quiz.<br/>
+		<b>quizInfo.hasQuit</b> is a boolean.<br/>
+		<b>quizInfo.deleteQuiz</b> is a function that allows you to delete the generated quiz.<br/>
+		<b>quizInfo.quitQuit</b> is a function that will allow you to end the quiz if the not done so already.<br/>
+		<b>quizInfo.nextQuestion</b> is a function will allow you to switch to the next function.<br/>
+		<b>$currQuiz</b> is a jquery object containing a reference to the quiz.
+		<code><pre>
+options.statusUpdate = function( info, $quiz ){
+	$( "#score-right" ).html( info.numOfRight ); 
+	$( "#score-wrong" ).html( info.numOfWrong ); 
+	
+	if( info.hasQuit ){
+		var response = ( info.score >= 50 ) ? "Good job!" : "You need help." ;
+		$( $quiz ).find( ".q-statDetails" ).hide();
+		$( $quiz ).find( ".q-extraStat" ).html( response );
+	}
+};
+</pre></code>
+		<div id="animationBox">
+			Right: <span id="score-right"></span> -- Wrong: <span id="score-wrong"></span><br/>
+			<div id="statusUpdate" class="quizType"></div>
+		</div>
+	</p>	
+	<h2>Options.quizType : string</h2> 
+	<p>
+		<b>Options.quizType</b> allows you to set the quiz type. 
+		<br/> The quiz types are "trueOrFalse", "multipleChoice", "multiChoiceOl", "flashCard" and "fillInTheBlank". 
+		<br/> Shorthand notations are "tf", "multi", "multiList", "cards", "fill".
+		<br/> This is only need if you send in an array and not a object with a defined quiz type.
+		<br/><b>Note</b>: For multiple choice quiz types, the answer positions can be saved in order
+		<br/> by placing null in the ansSel array property for the desired position of the answer.
+		<br/> Options.showHTML shows an example of this.
+<code><pre>
+options.title = "quizType: fill";
+options.quizType = "fill";
+$( "#quizType0" ).jQuizMe( quiz1, options );		
+		
+options.title = "quizType: multileChoice";
+options.quizType = "multi";
+$( "#quizType1" ).jQuizMe( quiz1, options );
+
+options.title = "quizType: multipleChoiceOl";
+options.quizType = "multiList";
+$( "#quizType2" ).jQuizMe( quiz1, options );
+
+options.title = "quizType: trueOrFalse";
+options.quizType = "trueOrFalse";
+$( "#quizType3" ).jQuizMe( quiz1, options );
+
+options.title = "quizType: flashCards";
+options.quizType = "cards";
+$( "#quizType4" ).jQuizMe( quiz1, options );
+</pre></code>		
+	<div id="animationBox">
+		<div id="quizType0" class="quizType"></div>
+		<div id="quizType1" class="quizType"></div>
+		<div id="quizType2" class="quizType"></div>
+		<div id="quizType3" class="quizType"></div>
+		<div id="quizType4" class="quizType"></div>
+	</div>
+	<div style="clear:both"></div>
+	</p>
+	<h2>Options.title : string</h2> 			
+	<p>
+		Title of the quiz.
+		<code><pre>options.title = "The Quiz Demo.";</pre></code>
+		<div id="animationBox">
+			<div id="title" class="quizType"></div>
+		</div>
+	</p>	
+	
+</body>
+
+<script type="text/javascript" src = "../../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../js/jQuizMe-2.2.1.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quiz1 = [	
+		{ 
+			ques: "Silver", //question
+			ans: "Ag", // answer
+			ansInfo : "More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"  // answer information.
+		},
+		{
+			ques: "Gold", 
+			ans: "Au", 
+			ansInfo : "Gold-Au <br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+		}
+	], 
+	quiz2 = {
+		"fill": quiz1,
+		"tf":[{
+				ques: "The derivative of x.",
+				ans: "1",
+				ansSel: [ "x", "not a number", "x^2" ]
+			},
+			{
+				ques: "Absolute Zero is 273.15 Kelvin.",
+				ans: false,
+				ansInfo: "Absolute Zero is 0 Kelvin or -273.15 degrees Celicus."
+		}]
+	};
+	
+	var options = {
+		addToEnd: " has what periodic symbol ?",
+		quizType: "fill", 
+		title: "quizType: fill"
+	};
+	
+	$( "#quizType0" ).jQuizMe( quiz1, options );
+	
+	options.title = "quizType: multileChoice";
+	options.quizType = "multi";
+	$( "#quizType1" ).jQuizMe( quiz1, options );
+	
+	options.title = "quizType: multipleChoiceOl";
+	options.quizType = "multiList";
+	$( "#quizType2" ).jQuizMe( quiz1, options );
+	$( "#activeClass" ).jQuizMe( quiz1, options );
+	$( "#hoverClass" ).jQuizMe( quiz1, options );
+	
+	options.title = "quizType: flashCards";
+	options.quizType = "cards";
+	$( "#quizType4" ).jQuizMe( quiz1, options );
+	
+	options.title = "quizType: trueOrFalse";
+	options.quizType = "trueOrFalse";
+	$( "#quizType3" ).jQuizMe( quiz1, options );
+
+	
+	options = {};
+	options.addToEnd = " has what periodic symbol ?";
+	$( "#addToEnd" ).jQuizMe( quiz1, options );
+	
+	options = {};
+	options.allQuizType = "multiList";
+	options.multiLen = 1;
+	$( "#multiLen" ).jQuizMe( quiz2, options );
+	
+	options = {};
+	options.allRandom = true;
+	options.numOfQuizQues = 1;
+	$( "#numOfQuizQues" ).jQuizMe( quiz2, options );
+	
+	options = {};
+	options.allQuizType = "multi";
+	$( "#allQuizType" ).jQuizMe( quiz2, options );
+	
+	options = {};
+	options.allRandom = true;
+	$( "#allRandom" ).jQuizMe( quiz2, options );
+	
+	options = {};
+	options.random = true;
+	$( "#random" ).jQuizMe( quiz2, options );
+		
+	options = {};
+	options.disableRestart = true;
+	$( "#disableRestart" ).jQuizMe( quiz1, options );
+	
+	options = {};
+	options.disableDelete = true;
+	$( "#disableDelete" ).jQuizMe( quiz1, options );
+	
+	options = {};
+	options.help = "Use <a href='http://www.google.com' alt='Google.com'>Google.com</a> to cheat";
+	$( "#help" ).jQuizMe( quiz1, options );
+
+	options = {};
+	options.intro = "Use google to cheat.";
+	$( "#intro" ).jQuizMe( quiz1, options );
+	
+	options = {};
+	options.review = false;
+	$( "#review" ).jQuizMe( quiz1, options );
+	
+	var quizWithRetry = {
+		"fill":[
+			{ "ques": "What is 41 * 1.5 ?", "ans":(41*1.5), "retry": 5 }
+		]
+	};
+	options = { intro: "Your get 5 chances to answer correctly."};
+	$( "#retry" ).jQuizMe( quizWithRetry, options );
+	
+	options = {};
+	options.statusUpdate = function( info, $quiz ){
+		$( "#score-right" ).html( info.numOfRight ); 
+		$( "#score-wrong" ).html( info.numOfWrong ); 
+		
+		if( info.hasQuit ){
+			var response = ( info.score >= 50 ) ? "Good job!" : "You need help." ;
+			$( $quiz ).find( ".q-statDetails" ).hide();
+			$( $quiz ).find( ".q-extraStat" ).html( response );
+		}
+	};
+	$( "#statusUpdate" ).jQuizMe( quiz1, options );
+
+	var quizWithHTML = {
+		multiList:[{
+			ques: "Which html tag is outdated.",
+			ans: "<big>",
+			ansSel: [ null, "<li>", "<td>" ]
+		}]
+	};
+	
+	options = {};
+	options.showFeedback = false;
+	$( "#showFeedback" ).jQuizMe( quiz1, options );
+	
+	options = {};
+	options.showAnsInfo = false;
+	$( "#showAnsInfo" ).jQuizMe( quiz1, options );
+	
+	options = {};
+	options.showHTML = true;
+	$( "#showHTML" ).jQuizMe( quizWithHTML, options );
+	
+	options = {};
+	options.showWrongAns = true;
+	$( "#showWrongAns" ).jQuizMe( quiz1, options );
+	
+	options = {};
+	options.title = "The Quiz Demo.";
+	$( "#title" ).jQuizMe( quiz1, options );
+	
+});
+</script>
+</html>

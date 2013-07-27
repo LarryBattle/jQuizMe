@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe StatusUpdate Demo 2 - by Larry Battle</title>
+	<link rel="stylesheet" type="text/css" href= "http://jquizme.googlecode.com/hg/releases/pre-release%20of%20jQuizMe%202.2%20fixed/jQuizMe-2.2.css"/>
+</head>
+<body>
+	<a href = "http://code.google.com/p/jquizme/wiki/statusUpdate" >Back to statusUpdate wiki</a><br/>
+	<p>Using jQuery <span id="jqueryVersion"></span> and jQuizMe <span id="jQuizMeVersion"></span></p>
+	<h2>jQuizMe StatusUpdate Demo 2</h2>
+	<h2>Goal:</h2>
+	Redirect the page to google.com if the user has answered more than 1 question correct when the quiz has finished.
+	<h2>Example:</h2>
+	<div id="quizArea"></div>
+<h2>Code:</h2>
+<code><pre>
+var options = {};
+options.statusUpdate = function( quizInfo, $quiz ){
+	// The page will be redirect to a google if there is more than one question right on quit.
+	if( quizInfo.numOfRight > 1 && quizInfo.hasQuit ){
+		document.location = "http://www.google.com?q=I'm too smart";
+	}
+};
+</pre></code>
+</body>
+<script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://jquizme.googlecode.com/hg/releases/pre-release%20of%20jQuizMe%202.2%20fixed/jQuizMe-2.2.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quiz = [
+        { 
+                ques: "Silver", //question
+                ans: "Ag", // answer
+                ansInfo : "<br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"  // answer information.
+        },
+        {
+                ques: "Gold.", 
+                ans: "Au", 
+                ansInfo : "Gold-Au <br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+        }
+	];
+	var options = {};
+	options.statusUpdate = function( quizInfo, $quiz ){
+		// The page will be redirect to a google if there is more than one question right on quit.
+		if( quizInfo.numOfRight > 1 && quizInfo.hasQuit ){
+			document.location = "http://www.google.com?q=I'm too smart";
+		}
+	};
+	$( "#quizArea" ).jQuizMe( quiz, options );
+	
+	// Display version information.
+	$( "#jqueryVersion" ).text( $.fn.jquery );
+	$( "#jQuizMeVersion" ).text( $.fn.jQuizMe.version );
+});
+</script>
+</html>

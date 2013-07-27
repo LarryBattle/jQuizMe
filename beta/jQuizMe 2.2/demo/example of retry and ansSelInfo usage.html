@@ -1,0 +1,84 @@
+<html>
+<head>
+	<title>jQuizMe - retry and ansSelInfo example</title>
+	<link rel="stylesheet" type="text/css" href="../css/jQuizMe-2.2.css"/>
+	<style type="text/css">
+	#quizArea{
+		width: 20em;
+		height: 40em;
+		margin: 2em;
+	}
+	</style>
+</head>
+<body>
+<code>
+<pre>
+Each quiz problem can have the following properties { ques, ans, ansInfo, ansSel, ansSelInfo, retry }
+
+"retry" is amount of attempts that a user will have to answer a question correctly.
+
+"ansSelInfo" is used to provide additional information each the answer selections.
+Each element in "ansSelInfo" correspond with each element in "ansSel".
+This allows for each answer selection to have unique feedback.
+
+The following quiz uses the "retry" and "ansSelInfo" properties.
+
+// ### Example Quiz
+var quiz = {
+	"multiList":[
+		{ 
+			ques: "Let 2x = 10. &#60;br/>What is x?",
+			ans: 5,
+			ansSel: [ 10, 20, 0 ],
+			retry: 2 	// The question can only be tried twice. Otherwise the user's answer is wrong.
+		},
+		{ 
+			ques: "What is the capital of Canada?", 
+			ans: "Ottawa, Ontario",
+			ansInfo: "&#60;a href='http://en.wikipedia.org/wiki/Ottawa'>The City of Ottawa&#60;/a> is where the capital of Canada.",
+			ansSel: [ "Hanoi", "Washington, D.C." ] 
+			ansSelInfo: [
+				"Hanoi is the capital of Vietnam", 
+				"Washington, D.C. is the capital of the USA"
+			]
+		}
+	]
+}; 
+$( "#quizArea" ).jQuizMe( quiz );
+// ### End of Example Quiz
+</pre>
+</code>
+<br/>
+<div id="quizArea">
+	<div id="quiz"></div>
+</div>
+<script src = "../js/jquery-1.6.2.min.js"></script>
+<script src="../js/jQuizMe-2.2.js"></script>
+<script type="text/javascript">
+var quiz = {
+	"multiList":[
+		{ 
+			ques: "Let 2x = 10. <br/>What is x?",
+			ans: 5,
+			ansSel: [ 10, 20, 0 ],
+			retry: 2 	// The question can only be tried twice. Otherwise the user's answer is wrong.
+		},
+		{ 
+			ques: "What is the capital of Canada?", 
+			ans: "Ottawa, Ontario",
+			ansInfo: "<a href='http://en.wikipedia.org/wiki/Ottawa'>The City of Ottawa</a> is where the capital of Canada.",
+			ansSel: [ "Hanoi", "Washington, D.C." ],
+			ansSelInfo: [
+				"Hanoi is the capital of Vietnam", 
+				"Washington, D.C. is the capital of the USA"
+			]
+		}
+	]
+}; 
+var options = { 
+	alwaysShowAnsInfo: true
+};
+$( "#quiz" ).jQuizMe( quiz, options );
+</script>
+</body>
+</html>

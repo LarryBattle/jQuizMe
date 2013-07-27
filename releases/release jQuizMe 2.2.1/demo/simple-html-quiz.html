@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe Demo4 - by Larry Battle</title>
+	<link rel="stylesheet" type="text/css" href="../css/jQuizMe.css"/>
+</head>
+<body>
+	<a href = "http://code.google.com/p/jquizme/wiki/HowToUse" >Back</a><br/>
+	<div id="quizArea"/>
+</body>
+<script type="text/javascript" src = "../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/jQuizMe-2.2.1.js"></script>
+<script type="text/javascript">
+// There was an extra comma at the end of multiList array.
+$( function($){
+
+	var quizMulti = {
+	multi: [{
+        ques: "Which should you use to mark up list items?",
+        ans: "<li>",
+        ansSel: ["<div>", "<img>"]
+    },
+    {
+        ques: "2+2",
+        ans: "4",
+        ansSel: [ 1,2,3,null ]
+    }],
+    multiList: [
+	{
+        ques: "2+2",
+        ans: "<big>4</big>",
+        ansSel: [ 1,2,3,null ]
+    },
+	{
+        ques: "Which should you use to mark up list items?",
+        ans: "<li>",
+        ansSel: ["<div>", "<img>"]
+    },
+    {
+        ques: "2+2",
+        ans: "4",
+        ansSel: [ 1,2,3,null ]
+    }]
+    },
+	
+	/*
+	var quizMulti = {
+		multiList: [
+		{
+			ques: "2+2",
+			ans: "<big>4</big>",
+			ansSel: [ 1,2,3,null ]
+		}]
+    },
+	*/
+    options = {
+        //help: "All the information required can be found in the <a href='introduction/'>Introductory Lesson</a>. You can go through the lesson again if you struggle with this quiz.",
+        animationType: 0,
+		showHTML: true,
+        showWrongAns: true,
+        title: "Bug with getting ans"
+	};
+	$("#quizArea").jQuizMe(quizMulti, options);
+});
+</script>
+</html>

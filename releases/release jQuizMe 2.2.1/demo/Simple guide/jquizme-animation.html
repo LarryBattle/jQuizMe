@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe: Options.fx*</title>
+	<link rel="stylesheet" type="text/css" href="../../css/jQuizMe.css"/>
+	<style type="text/css">
+		#animationBox{ 
+			margin: 1em;
+			width: 100em;
+			height: 23em;
+		}
+		.fxType{
+			width: 20em;
+			float: left;
+		}
+		body{
+			padding-left: 1em;
+		}
+		p{
+			padding-left: 1.2em;
+		}
+		h1, h2{
+			border-left: solid 1em black;
+			border-bottom: solid 1px black;
+			padding-left: 1em;
+		}
+		pre{
+			border-left: solid 0.2em black;
+			color: black;
+			padding-left: 1em;
+		}
+	</style>
+</head>
+<body>
+	<center><a href = "http://code.google.com/p/jquizme/wiki/HowToUse" >Back</a></center>
+	<h1>jQuizMe: Options.fx*</h1>
+	<p>
+		<q>This page will explain the options for animation.</q>
+		<cite>- By Larry Battle</cite>
+	</p>
+	<h2>Options.fxType</h2> 
+	<p>
+		The type of animations availiable. There are four types; [ "Hide and show", "fadeToggle", "slideToggle", "height and weight toggle" ]<br/>
+		Pick the index of the desired type.<br/>
+		<b>Note</b>: To get rid jumping when the animation occurs, place the quiz in an element with a set width and height.<br/>
+<code><pre>
+div.quizHere{ 
+	width: "20em", height: "21em" 
+}</pre></code>
+
+<code><pre>
+options.title = "fxType 0";
+options.fxType = 0;
+$( "#fxType0" ).jQuizMe( quiz, options );
+</pre></code>
+<code><pre>
+options.title = "fxType 1";
+options.fxType = 1;
+$( "#fxType1" ).jQuizMe( quiz, options );
+</pre></code>
+<code><pre>
+options.title = "fxType 2";
+options.fxType = 2;
+$( "#fxType2" ).jQuizMe( quiz, options );
+</pre></code>
+<code><pre>
+options.title = "fxType 3";
+options.fxType = 3
+$( "#fxType3" ).jQuizMe( quiz, options );
+</pre></code>
+	</p>
+	
+	<div id="animationBox">
+		<div id="fxType0" class="fxType"></div>
+		<div id="fxType1" class="fxType"/></div>
+		<div id="fxType2" class="fxType"/></div>
+		<div id="fxType3" class="fxType"/></div>
+		<div id="fxType4" class="fxType"/></div>
+	</div>
+	
+	<h2>Options.fxCode</h2>
+	<p>
+		Create your own animation. The arguements are el, on, spd.		
+<code><pre>
+options.title = "fxCode";
+options.fxCode = function( el, on, spd ){ 
+	if( on ){
+		el.slideDown( spd );
+	}
+	else{
+		el.fadeOut( spd );
+	}
+};
+$( "#fxCode" ).jQuizMe( quiz, options );
+</pre></code>
+	</p>
+		<div id="animationBox">
+			<div id="fxCode" class="fxType"></div>
+		</div>
+	
+	<h2>Options.fxSpeed</h2>
+	<p>
+		Control the speed of the animations. Can be a number, "slow", "normal", or "fast".
+<code><pre>
+options.title = "fxSpeed: slow";
+options.fxSpeed = "slow";
+$( "#fxSpeed1" ).jQuizMe( quiz, options );
+</pre></code>		
+
+<code><pre>
+options.title = "fxSpeed: normal";
+options.fxSpeed = "normal";
+$( "#fxSpeed2" ).jQuizMe( quiz, options );
+</pre></code>		
+
+<code><pre>
+options.title = "fxSpeed: fast";
+options.fxSpeed = "fast";
+$( "#fxSpeed3" ).jQuizMe( quiz, options );
+</pre></code>
+	</p>		
+		<div id="animationBox">
+			<div id="fxSpeed1" class="fxType"></div>
+			<div id="fxSpeed2" class="fxType"></div>
+			<div id="fxSpeed3" class="fxType"></div>
+		</div>
+</body>
+<script type="text/javascript" src = "../../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../js/jQuizMe-2.2.1.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quiz = {
+		"fill" : [
+			{	
+				ques: "Silver", //question
+				ans: "Ag", // answer
+				ansInfo : "More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"  // answer information.
+			},
+			{
+				ques: "Gold", 
+				ans: "Au", 
+				ansInfo : "Gold-Au <br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+			}
+		]
+	};
+	
+	var options = {
+		addToEnd: " has what periodic symbol ?",
+		fxType: 0,
+		title: "fxType 0"
+	};
+	
+	$( "#fxType0" ).jQuizMe( quiz, options );
+	
+	options.title = "fxType 1";
+	options.fxType = 1;
+	$( "#fxType1" ).jQuizMe( quiz, options );
+	
+	options.title = "fxType 2";
+	options.fxType = 2
+	$( "#fxType2" ).jQuizMe( quiz, options );
+	
+	options.title = "fxType 3";
+	options.fxType = 3
+	$( "#fxType3" ).jQuizMe( quiz, options );
+	
+	options.title = "fxSpeed: slow";
+	options.fxSpeed = "slow";
+	$( "#fxSpeed1" ).jQuizMe( quiz, options );
+	
+	options.title = "fxSpeed: normal";
+	options.fxSpeed = "normal";
+	$( "#fxSpeed2" ).jQuizMe( quiz, options );
+	
+	options.title = "fxSpeed: fast";
+	options.fxSpeed = "fast";
+	$( "#fxSpeed3" ).jQuizMe( quiz, options );
+	
+	options.title = "fxCode";
+	options.fxCode = function( el, on, spd ){ 
+		if( on ){
+			el.slideDown( spd );
+		}
+		else{
+			el.fadeOut( spd );
+		}
+	};
+	$( "#fxCode" ).jQuizMe( quiz, options );
+});
+</script>
+</html>

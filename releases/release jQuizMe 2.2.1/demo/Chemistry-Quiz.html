@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe Demo1 - by Larry Battle</title>
+	<link rel="stylesheet" type="text/css" href="../css/jQuizMe.css"/>
+</head>
+<body>
+	<a href = "http://code.google.com/p/jquizme/wiki/HowToUse" >Back</a><br/>
+	<div id="quizArea"/>
+</body>
+<script type="text/javascript" src = "../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/jQuizMe-2.2.1.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quiz = {
+		"multi":[{ 
+			ques: "Silver", //question
+			ans: "Ag", // answer
+			ansInfo : "More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>",  // answer information.
+			retry: 3
+		},
+		{
+			ques: "Gold", 
+			ans: "Au", 
+			ansInfo : "Gold-Au <br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+		}],
+		"trueOrFalse":[ { 
+			ques: "Silver", //question
+			ans: "Ag", // answer
+			ansInfo : "More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>",  // answer information.
+			retry: 3
+		},
+		{
+			ques: "Gold", 
+			ans: "Au", 
+			ansInfo : "Gold-Au <br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+		}]
+	};
+	var options = {
+		addToEnd: " has what periodic symbol ?",
+		quizType: "fill"  //Or you can write fillInTheBlank instead of fill.
+	};
+	// quiz has 2 problems, while the options has set the quiz type to fill in the blank.
+	$( "#quizArea" ).jQuizMe( quiz, options, { btn:{ next: [ "GO ON", "Next Question" ] } } );
+});
+</script>
+</html>

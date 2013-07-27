@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe Demo 3 - by Larry Battle</title>
+	<link rel="stylesheet" type="text/css" href="http://jquizme.googlecode.com/hg/releases/pre-release%20of%20jQuizMe%202.2%20fixed/jQuizMe-2.2.css"/>
+</head>
+<body>
+	<p>Using jQuery <span id="jqueryVersion"></span> and jQuizMe <span id="jQuizMeVersion"></span></p>
+	<h2>jQuizMe Demo 3</h2>
+	<a href = "http://code.google.com/p/jquizme/wiki/HowToUse" >Back to HowToUse Wiki</a><br/>
+	<div id="quizArea"></div>
+</body>
+<script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://jquizme.googlecode.com/hg/releases/pre-release%20of%20jQuizMe%202.2%20fixed/jQuizMe-2.2.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quiz = {
+        multi:[
+                { ques: "Which is not a javascript keyword.", ans:"local", ansSel:[ "new", "delete" ]}
+        ]
+	};
+	var options = {
+			showAns: false,
+			review: false
+	};
+	$( "#quizArea" ).jQuizMe( quiz, options );
+	
+	//Display Version information.
+	$( "#jqueryVersion" ).text( $.fn.jquery );
+	$( "#jQuizMeVersion" ).text( $.fn.jQuizMe.version );
+});
+</script>
+</html>

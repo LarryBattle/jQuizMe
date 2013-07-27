@@ -1,0 +1,134 @@
+/*
+jQuizMe 2.1 - 12/15/09 Programmed and CopyWrited by Larry Battle 2008 - 2009 
+*/	
+.quiz-el{
+	background: #ffaa33;
+	font-size: 1.1em;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	position: relative;
+	padding: 0.2em;
+	width: 17em;
+}
+.quiz-el div{
+	padding: 0.2em;
+}
+.quiz-el input{
+	font-size: 0.8em;
+}
+/* .q-innerArea = .q-header, .q-help, .q-prob, .q-intro, .q-gameOver */
+.q-innerArea{
+	background: #ffdd77;
+	position:relative;
+	clear: both;
+	color: black;
+}
+.q-header, .q-help, .q-review-menu {
+	border-bottom: thin black solid;
+}
+.q-intro{
+	padding: 0.2em;
+}
+.q-title{
+	overflow: hidden;
+	width: 80%;
+	margin: 0;
+}
+/*This is a hack, because IE fails on float:right.*/
+.q-counter{
+	position: absolute;
+	top: 0%;
+	right: 0%;
+	margin: 1%;
+	padding: 0%;
+}
+.q-counter{
+	float: right;
+}
+.q-help{
+	position: relative;
+	clear:both;
+}
+/*.q-probArea = .q-ques, .q-ansSel, .q-result */
+.q-probArea{
+	background: #eee;
+	border: thin black solid;
+	font-size: 1.2em;
+	position: relative;
+}
+.q-help-menu{
+	width: 97%;
+}
+.q-help-info{
+	clear:both;
+}
+.q-quit-area, .q-review-arrows{
+	display: inline;
+	width: auto;
+}
+.q-quit-area{
+	float: right;
+}
+.q-review-arrows{
+	position: relative;	/*IE hack.*/
+	width: 2.3em;
+}
+.q-center{
+	text-align: center;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.q-gameOver .q-statTotal{
+	color: blue;
+}
+.q-quesInput{
+	width: 95%;
+}
+.q-ol{
+	list-style-type: upper-alpha;
+	list-style-position: inside;
+	padding: 0;
+	margin: 0;
+}
+.q-ol-li{
+	margin: 0.4em auto 0.4em auto;
+}
+.q-ol-hover{
+	background: #777777;
+}
+.q-ol-active{
+	background: black;
+	color: #ccffaa;
+}
+/*IE displays the wrong width for <select> tags.*/
+.q-select{
+	width : 80%;
+}
+.q-select{
+	font-size: 0.8em;
+	width: 100%;
+}
+.q-timer-area{
+	display:block;
+	text-align:center;
+	width: auto;
+}
+.q-review-menu{
+	text-align: center;
+	width: auto;
+}
+.q-reviewBar-btns{
+	position: relative;
+	display: inline-block;
+	width: 49%;
+}
+.q-rightArrow{
+	float:right;
+}
+.q-leftArrow{
+	float:left;
+}
+.q-timer-area{
+	line-height: 0;
+	height:0;
+}

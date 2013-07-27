@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe: misc</title>
+	<link rel="stylesheet" type="text/css" href="../../css/jQuizMe.css"/>
+	<style type="text/css">
+		#animationBox{ 
+			margin: 1em;
+			width: 100em;
+			height: 25em;
+		}
+		.quizType{
+			margin: 0.1em;
+			float: left;
+		}
+		body{
+			padding-left: 1em;
+		}
+		p{
+			padding-left: 1.2em;
+		}
+		h1, h2{
+			border-left: solid 1em black;
+			border-bottom: solid 1px black;
+			padding-left: 1em;
+		}
+		pre{
+			border-left: solid 0.2em black;
+			color: black;
+			padding-left: 1em;
+		}
+	</style>
+</head>
+<body>
+	<center><a href = "http://code.google.com/p/jquizme/wiki/HowToUse" >Back</a></center>
+	<h1>jQuizMe: misc</h1>
+	<p>
+	<q>This page will explain hidden features.</q>
+	<cite>- By Larry Battle</cite>
+	</p>
+	<h2>Set the position for Multiple Choice</h2> 
+	<p>
+		When making a multiple choice quiz, you can set the position for the answer by placing a <b>null</b> value in the ansSel array<br/>
+		This will cause the answer selections to not be randomized and the null will be replaced with the answer.<br/>
+		This is useful when you want the answer to always be A or B.
+		<code><pre>
+var quiz3 = {
+	multiList:[{
+		ques:"How is this a question?",
+		ans:"Just because...",
+		ansSel : [ "The answer is below", null, "The answer is above" ]
+	}]
+}
+$( "#quiz3" ).jQuizMe( quiz3 );		
+		</pre></code>
+		<div id="animationBox">
+			<div id="quiz3" class="quizType"></div>
+		</div>
+	</p>
+	
+	<h2>You can use html tags and javascript in your questions.</h2>
+	<p>
+	Your questions and answers can be more than simple text. So embed videos, images or java into your quizzes.
+	</p>
+<code><pre>
+
+</pre></code>
+
+<h2>Take advantage of .focusThis and .clickThis</h2>
+	<p>
+	When questions are changed, .focusThis gets focused, and .clickThis gets clicked. 
+	<br/> $( ".focusThis" ).focus() and $( ".clickThis" ).click()
+	</p>
+<code><pre>
+
+</pre></code>
+</body>
+<script type="text/javascript" src = "../../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../js/jQuizMe-2.2.1.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quiz1 = [	
+		{ 
+			ques: "Silver", //question
+			ans: "Ag", // answer
+			ansInfo : "More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"  // answer information.
+		},
+		{
+			ques: "Gold", 
+			ans: "Au", 
+			ansInfo : "Gold-Au <br/>More info <a href='http://www.periodictable.com/Elements/079/index.html'>here</a>"
+		}
+	], 
+	quiz2 = {
+		"fill": quiz1,
+		"tf":[{
+				ques: "The derivative of x.",
+				ans: "1",
+				ansSel: [ "x", "not a number", "x^2" ]
+			},
+			{
+				ques: "Absolute Zero is 273.15 Kelvin.",
+				ans: false,
+				ansInfo: "Absolute Zero is 0 Kelvin or -273.15 degrees Celicus."
+		}]
+	};
+	var quiz3 = {
+		multiList:[{
+			ques:"How is this a question?",
+			ans:"Just because...",
+			ansSel : [ "The answer is below", null, "The answer is above" ]
+		}]
+	}
+	$( "#quiz3" ).jQuizMe( quiz3 );			
+});
+</script>
+</html>

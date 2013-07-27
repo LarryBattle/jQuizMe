@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe Demo 2 - by Larry Battle</title>
+	<link rel="stylesheet" type="text/css" href="http://jquizme.googlecode.com/hg/releases/pre-release%20of%20jQuizMe%202.2%20fixed/jQuizMe-2.2.css"/>
+</head>
+<body>
+	<p>Using jQuery <span id="jqueryVersion"></span> and jQuizMe <span id="jQuizMeVersion"></span></p>
+	<h2>jQuizMe Demo 2</h2>
+	<a href = "http://code.google.com/p/jquizme/wiki/HowToUse" >Back to HowToUse Wiki</a><br/>
+	<div id="quizArea"></div>
+</body>
+<script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://jquizme.googlecode.com/hg/releases/pre-release%20of%20jQuizMe%202.2%20fixed/jQuizMe-2.2.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quizMulti = {
+        multiList:[
+                { ques: "opposite / hypotonus", ans: "sin", ansSel : "tan" },
+                { ques: "adjacent / hypotonus", ans: "cos", ansSel: "tan" }
+        ],
+        tf:[
+                { ques: "cos( 30 degrees )", ans: "&#8730;3 / 2", ansSel: [ " &#8730;2 / 3", "1/4" ] },
+                { ques: "sin( 60 degrees )", ans: "&#8730;3 / 2", ansSel: [ "1/2", "&#8730;2" ] }       
+        ],
+        fill:[
+                { ques: "1/tan", ans: "cot" },
+                { ques: "1/cos", ans: "sec" }
+        ]
+	};
+	// quizMulti has 6 problems with 3 different quiz types.
+	$( "#quizArea" ).jQuizMe( quizMulti );
+	
+	//Display Version information.
+	$( "#jqueryVersion" ).text( $.fn.jquery );
+	$( "#jQuizMeVersion" ).text( $.fn.jQuizMe.version );
+});
+</script>
+</html>

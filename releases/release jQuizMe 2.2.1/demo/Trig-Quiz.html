@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>jQuizMe Demo2 - by Larry Battle</title>
+	<link rel="stylesheet" type="text/css" href="../css/jQuizMe.css"/>
+</head>
+<body>
+	<a href = "http://code.google.com/p/jquizme/wiki/HowToUse" >Back</a><br/>
+	<div id="quizArea"/>
+</body>
+<script type="text/javascript" src = "../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/jQuizMe-2.2.1.js"></script>
+<script type="text/javascript">
+$( function($){
+	var quizMulti = {
+        multiList:[
+			{ ques: "opposite / hypotonus", ans: "sin", ansSel : "tan" },
+			{ ques: "adjacent / hypotonus", ans: "cos", ansSel: "tan" }
+        ],
+        tf:[
+			{ ques: "cos( 30 degrees )", ans: "&#8730;3 / 2", ansSel: [ " &#8730;2 / 3", "1/4" ] },
+			{ ques: "sin( 60 degrees )", ans: "&#8730;3 / 2", ansSel: [ "1/2", "&#8730;2" ] }       
+        ],
+        fill:[
+			{ ques: "1/tan", ans: "cot" }, { ques: "1/cos", ans: "sec" }
+        ]
+	};
+	// quizMulti has 5 problems with 3 different quiz types.
+	$( "#quizArea" ).jQuizMe( quizMulti, { allQuizType: "multi" } );
+});
+</script>
+</html>

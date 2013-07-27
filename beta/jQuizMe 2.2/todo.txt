@@ -1,0 +1,4 @@
+JQuizMe 2.2 Release.
+- Fix documentation.
+- Check all examples.
+- ...
