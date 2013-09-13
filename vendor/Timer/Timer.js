@@ -1,5 +1,6 @@
 /**
 * Simple Timer
+* Attaches a timer to a element
 * MIT license
 * Sept 13, 2013
 * Requires jQuery
