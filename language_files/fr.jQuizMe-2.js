@@ -50,8 +50,8 @@ var frLang = {
   },
   quiz:{
     tfEqual: " = ",
-    tfEnd : "?",
-    tfFalse: "False",
-    tfTrue: "True"
+    tfEnd : "&nbsp;?",
+    tfFalse: "Faux",
+    tfTrue: "Vrai"
   }
 };
