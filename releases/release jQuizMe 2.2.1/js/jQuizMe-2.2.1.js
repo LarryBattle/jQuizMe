@@ -59,6 +59,7 @@
 					$("<blockquote/>").addClass( "q-statDetails"),
 					$("<div/>").addClass( "q-extraStat" )	
 			),
+			$("<div/>").addClass('conclusion'),
 			$("<div/>").addClass( "q-options q-probArea q-center").append( 
 				$("<input type='button'/>").addClass( "q-restart-btn" ),
 				$("<input type='button'/>").addClass( "q-del-btn" ) 
@@ -215,7 +216,8 @@
 		enableRetry: true, // Allows the user to repeat a problem before advancing to next question. 
 		fxType: 0, // animateType [ show/hide, fadeToggle, slideToggle, weight&heightToggle ];
 		fxCode: false, //If a function, then this is used for animation. Please refer to animateType[] for examples.
-		fxSpeed: "normal", // "fast", "slow", "normal" or numbers. 
+		fxSpeed: "normal", // "fast", "slow", "normal" or numbers.
+		conclusion: "", // text displayed at the end of the quiz (can be HTML)
 		gameOverCallback: null,  // anonymous function called with the object "stats" in parameter
 		help: '', // Provide help text/html if needed.
 		hoverClass: "q-ol-hover", // Used on multiple choice, (multiOl), quiz types.
@@ -561,6 +563,9 @@
 				$( ".q-restart-btn", currQuiz).one( "click", reStartQuiz );			
 				$( ".q-del-btn", currQuiz).one( "click", deleteQuiz );
 				$( ".q-help, .q-check-btn, .q-prob, .q-intro, .q-ans", currQuiz).hide();
+				if ( settings.conclusion ) {
+					$( "div.conclusion" ).html( settings.conclusion );
+				}
 				if( $.isFunction(settings.gameOverCallback) ){
 					settings.gameOverCallback(stats);
 				}
