@@ -59,6 +59,7 @@
 					$("<blockquote/>").addClass( "q-statDetails"),
 					$("<div/>").addClass( "q-extraStat" )	
 			),
+			$("<div/>").addClass('conclusion'),
 			$("<div/>").addClass( "q-options q-probArea q-center").append( 
 				$("<input type='button'/>").addClass( "q-restart-btn" ),
 				$("<input type='button'/>").addClass( "q-del-btn" ) 
@@ -215,7 +216,9 @@
 		enableRetry: true, // Allows the user to repeat a problem before advancing to next question. 
 		fxType: 0, // animateType [ show/hide, fadeToggle, slideToggle, weight&heightToggle ];
 		fxCode: false, //If a function, then this is used for animation. Please refer to animateType[] for examples.
-		fxSpeed: "normal", // "fast", "slow", "normal" or numbers. 
+		fxSpeed: "normal", // "fast", "slow", "normal" or numbers.
+		conclusion: "", // text displayed at the end of the quiz (can be HTML)
+		gameOverCallback: null,  // anonymous function called with the object "stats" in parameter
 		help: '', // Provide help text/html if needed.
 		hoverClass: "q-ol-hover", // Used on multiple choice, (multiOl), quiz types.
 		intro: '', // Provide an text/html intro.
@@ -314,7 +317,7 @@
 				});
 			},
 			displayRetryMsg = function(){
-				var show = lang.ans.retry;
+				var show = '<span class="q-label q-label-retry">'+lang.ans.retry+'</span>';
 				if( settings.showAnsInfo ){
 					show += getAnsInfoForDisplay();
 				}
@@ -560,6 +563,12 @@
 				$( ".q-restart-btn", currQuiz).one( "click", reStartQuiz );			
 				$( ".q-del-btn", currQuiz).one( "click", deleteQuiz );
 				$( ".q-help, .q-check-btn, .q-prob, .q-intro, .q-ans", currQuiz).hide();
+				if ( settings.conclusion ) {
+					$( "div.conclusion" ).html( settings.conclusion );
+				}
+				if( $.isFunction(settings.gameOverCallback) ){
+					settings.gameOverCallback(stats);
+				}
 				if( settings.review ){
 					setupReview();
 				}
@@ -683,7 +692,7 @@
 				return isAnsCorr;
 			},
 			getUserAnsForDisplay = function( toUni ){
-				var ans = lang.ans.yourAns + "<br/>";
+				var ans = '<span class="q-label q-label-yourAns">'+lang.ans.yourAns+'</span>' + "<br/>";
 
 				return ( !getProblemProp( "userAnswer" ) ) ? "<del>" + ans +"</del>" :
 							ans + getStrWithSeeableHTML( getProblemProp( "userAnswer" ), toUni );
@@ -693,9 +702,9 @@
 					return "";
 				}
 				if( q.ansSelInfo[ currIndex ] ){
-					return "<hr/>" + lang.ans.whyAns + "<br/>" + (q.ansSelInfo[ currIndex ][ stats.indexSelected[ currIndex] ] || q.ansInfo[ currIndex ]);
+					return "<hr/>" + '<span class="q-label q-label-whyAns">'+lang.ans.whyAns+'</span>' + "<br/>" + (q.ansSelInfo[ currIndex ][ stats.indexSelected[ currIndex] ] || q.ansInfo[ currIndex ]);
 				}else{
-					return "<hr/>" + lang.ans.whyAns + "<br/>" + (q.ansInfo[ currIndex ] );
+					return "<hr/>" + '<span class="q-label q-label-whyAns">'+lang.ans.whyAns+'</span>' + "<br/>" + (q.ansInfo[ currIndex ] );
 				}
 			},
 			//setQResultDisplay(): IE Bug Fix. .q-result pops out when hidden. Thus, show() -> append() and hide() -> remove().
@@ -726,8 +735,8 @@
 					show = "", toUni = settings.showHTML;
 					
 				currAns = ( isArray( currAns ) ) ? currAns.concat(): [ currAns ];					
-				show = ( isUserAnsCorr ) ? lang.ans.praise :
-								( lang.ans.corrAns + '<br/>' + getStrArrOfSeeableHTML( currAns, toUni ).join( '<br/>' ) );
+				show = ( isUserAnsCorr ) ? '<span class="q-label q-label-praise">'+lang.ans.praise+'</span>' :
+								( '<span class="q-label q-label-corrAns">'+lang.ans.corrAns+'</span>' + '<br/>' + getStrArrOfSeeableHTML( currAns, toUni ).join( '<br/>' ) );
 			
 				if( !isUserAnsCorr || quit ){ 
 					if( settings.showWrongAns || quit ){
