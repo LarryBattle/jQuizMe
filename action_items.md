@@ -1,15 +1,8 @@
 ### Version: jQuizMe 3.0
-### Author: Larry Battle - blarry[at]bateru.com
-### I love feedback, so tell me what you think.
-
-#########
-# Larry #
-#########
 
 ## Developer Note ##
 	- Need test crew.
 	- Use Test Driven Development.
-	- Waterflow Development.
 
 ## Todo ## 
 	- Make Software Requirements and Schedule.
@@ -17,3 +10,5 @@
 	- Write up user guide and documentation.
 	- Verify and validate.
 	- Release jQuizMe and Test Cases.
+	- Fix documentation.
+	- Check all examples.
