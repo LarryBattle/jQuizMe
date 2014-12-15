@@ -1,10 +1,46 @@
-### Version: jQuizMe 2.1.5
-### Date: 11/29/2010
+### Version: jQuizMe 2.1.9
+### Date: 12/2/2010
 ### Author: Larry Battle - blarry[at]bateru.com
 ### I love feedback, so tell me what you think.
 
+Required Files: jQuery 1.4.2+, jQuizMe-uncompressed.js, jQuizMe.css
 
 ### Release Note:
+jQuizMe 2.1.9
+
+	- Bug: ansInfo question property has been disabled.
+
+	* Let quizInfo be the first arguement of statusUpdate, such that options.statusUpdate = function( quizInfo ){}
+
+	- Added: quizInfo.problem is important for tracking user activity.
+		# quizInfo.currIndex is the index of current question index.
+		# quizInfo.problem is array of objects which corresponds to the questions presented by jQuizMe.
+		# Each element in "problem" contains an object as the following.
+		# { "isCorrect": boolean, "userAnswer": string, "amountTried": number }
+		# Note that null is assigned to quizInfo.problem indexes for questions that have not be checked.
+		# Example: problem[0].isCorrect	// Tells you if the first question was correct.
+	- Added: lang.ans.retry, which has the vaule "Incorrect. Please try again.".
+
+	- Bug Fix: multiple choice quiz types now support html.
+	- Bug Fix: options.showHTML now works for answers as an array.
+	- Bug Fix: options.showHTML now allows html code to be displayed when showing the correct answers.
+	- Bug Fix: the default layout is resets with each new jQuizMe call.
+	- Bug Fix: Extend was calling settings and lang with were undefined.
+
+	- Changed: quizInfo has the following properties. 
+		# "currIndex", "problem", "numOfRight", "numOfWrong", 
+		# "score", "total", "hasQuit", "deleteQuiz", "quitQuiz", "nextQuestion"
+	- Changed: The help button is disabled if options.help is not defined or blank.
+	- Changed: options.statusUpdate updates on quiz creation, after intro, on next question, and gameover.
+	- Changed: IE version 8 and lower will be treated special.
+		# Previously, all IE were treated special.
+
+	- Deleted: options.blockCheck has been deleted because it's not useful.
+
+	- Misc: Faster options.showHtml unicode conversion.
+	- Misc: Faster restart time.
+	- Misc: Code optimization.
+
 jQuizMe 2.1.5 (Beta)
 	- Bug: html is rendered when options.showHTML = true.
 	- Bug: ansInfo question property has been disabled.
