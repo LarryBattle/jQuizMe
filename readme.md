@@ -8,6 +8,6 @@ jQuizMe is a webpage quiz application made with jQuery. Uses javascript and css.
 - True or False
 
 ##Note: 
-Original home at https://code.google.com/p/jquizme/
-
-Version 3 is in development
+- Original home at https://code.google.com/p/jquizme/
+- Checkout the release branches.
+- Version 3 is in development, maybe...
