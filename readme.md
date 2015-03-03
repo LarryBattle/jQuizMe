@@ -1,3 +1,7 @@
+## Note:
+Project is retired and not under active development.
+
+
 ## jQuizMe
 
 jQuizMe is a webpage quiz application made with jQuery. Uses javascript and css. You can make the following types of quizzes.
